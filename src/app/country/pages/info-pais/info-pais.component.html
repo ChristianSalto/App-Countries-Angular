@@ -1,0 +1,51 @@
+<div *ngIf="!pais; else divCard" class="alert alert-primary">Cargando...</div>
+
+<ng-template #divCard>
+  <div class="container p-4">
+    <div class="card mb-3">
+      <div class="card-header bg-transparent">
+        <h2>{{ pais.name.common }}</h2>
+        <span>{{ pais.flag }}</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Informacion:</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Poblacion: </strong> {{ pais.population | number }}
+          </li>
+          <li class="list-group-item">
+            <strong>Area: </strong> {{ pais.area | number }} Km&#178;
+          </li>
+          <li class="list-group-item">
+            <strong>Capital: </strong> {{ pais.capital }}
+          </li>
+          <li class="list-group-item">
+            <strong>Lenguaje: </strong> {{ lenguaje }}
+          </li>
+          <li class="list-group-item">
+            <strong>cca2: </strong> {{ pais.cca2 }}
+          </li>
+          <li class="list-group-item mb-4">
+            <strong>Map: </strong> <a href="{{ pais.maps.googleMaps }}">{{ pais.maps.googleMaps }}</a>
+          </li>
+        </ul>
+        <h3>Traducciones:</h3>
+        <div class="row">
+          <div class="col">
+            <span *ngFor="let item of translations" class="badge bg-primary m-1 p-2">
+              {{ item.common }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer bg-transparent">
+        <strong>Region: </strong> {{ pais.region }}
+      </div>
+    </div>
+  </div>
+
+
+  <pre>
+    {{ pais | json }}
+  </pre>
+</ng-template>

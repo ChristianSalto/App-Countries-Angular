@@ -1,0 +1,13 @@
+<form (ngSubmit)="handleSubmit()" class="example-form" autocomplete="off">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>{{ name }}</mat-label>
+    <input
+      matInput
+      [(ngModel)]="termino"
+      (input)="handleKeyPressed($event)"
+      [placeholder]="placeholder"
+      type="text"
+      name="termino"
+    />
+  </mat-form-field>
+</form>

@@ -1,0 +1,24 @@
+<h2>Capital</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-pais-input
+      (onEnter)="handleSubmit($event)"
+      placeholder="Buscar Capital..."
+      name="Capital"
+    ></app-pais-input>
+  </div>
+</div>
+
+<hr />
+
+<div *ngIf="error" class="alert alert-danger">
+  No se encontro nada con el termino {{ termino }}
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <app-pais-tabla [paises]="paises"></app-pais-tabla>
+  </div>
+</div>

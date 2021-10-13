@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import "/src/scss/variables";
+
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "/src/scss/content";
+@import "/src/scss/table";
+@import "/src/scss/content";
+@import "/src/scss/grid";
+@import "/src/scss/cards";
+
+
