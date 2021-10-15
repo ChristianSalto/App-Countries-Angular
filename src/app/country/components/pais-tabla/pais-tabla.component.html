@@ -9,14 +9,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pais of paises; index as i">
+    <tr
+      *ngFor="let pais of paises; index as i"
+      class="animate__animated animate__fadeIn"
+    >
       <td>{{ i }}</td>
       <td>{{ pais.flag }}</td>
       <td>{{ pais.name.common }}</td>
-      <td>{{ pais.capital || '-' }}</td>
+      <td>{{ pais.capital || "-" }}</td>
       <td>{{ pais.population | number }}</td>
       <td>
-        <a [routerLink]="[ '/infoPais', pais.cca2 ]">Ver...</a>
+        <a [routerLink]="['/infoPais', pais.cca2]">Ver...</a>
       </td>
     </tr>
   </tbody>

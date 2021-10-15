@@ -12,11 +12,15 @@ export class PaisComponent {
   error: boolean = false;
   paises: Pais[] = [];
 
-  constructor(private paisService: PaisService) { }
+  paiseSsuggestions: Pais[] = [];
+  showSuggestions: boolean = false;
 
-  handleSubmit( termino : string ) {
+  constructor(private paisService: PaisService) {}
+
+  handleSubmit(termino: string) {
     this.error = false;
-    this.termino = termino
+    this.termino = termino;
+    this.showSuggestions = false;
 
     this.paisService.handleSearchPais(this.termino).subscribe(
       (paises) => {
@@ -29,8 +33,16 @@ export class PaisComponent {
     );
   }
 
+  suggestions(termino: string) {
+    this.error = false;
+    this.termino = termino;
+    this.showSuggestions = true;
 
-  suggestions( termino : string ){
-    this.error =  false;
+    if (this.termino === '') this.showSuggestions = false;
+
+    this.paisService.handleSearchPais(termino).subscribe(
+      (paises) => (this.paiseSsuggestions = paises.splice(0, 5)),
+      (err) => (this.paiseSsuggestions = [])
+    );
   }
 }

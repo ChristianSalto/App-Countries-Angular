@@ -4,14 +4,52 @@ body {
   border: 1px solid transparent;
 }
 body {
+  background: linear-gradient(
+    45deg, #404040, transparent);
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+h2,h3,td{
+  color: $floralwhite;
+}
+
+hr{
+  color: $ultramarine;
+}
+
+a{
+  cursor: pointer;
+}
 
 .container {
   height: -webkit-fill-available;
   &__left {
     border-right: 1px solid gray;
+    margin-bottom: 20px;
   }
+  &__right{
+    // background: rgb(243, 198, 198);
+  }
+
+  &__table{
+    overflow-y: scroll;
+    height: 75vh;
+  }
+}
+
+.list{
+  &__custom{
+    width: 200px;
+    &--item{
+      background-color: #d7d7d7;
+      border: none;
+      padding: 0;
+    }
+  }
+}
+
+
+::-webkit-scrollbar {
+  display: none;
 }

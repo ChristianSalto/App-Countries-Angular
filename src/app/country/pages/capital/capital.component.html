@@ -1,14 +1,37 @@
-<h2>Capital</h2>
-<hr />
+<div class="animate__animated animate__fadeIn">
+  <h2>Capital</h2>
+  <hr />
 
-<div class="row">
-  <div class="col">
-    <app-pais-input
-      (onEnter)="handleSubmit($event)"
-      placeholder="Buscar Capital..."
-      name="Capital"
-    ></app-pais-input>
+  <div class="row">
+    <div class="col">
+      <app-pais-input
+        (onEnter)="handleSubmit($event)"
+        (onDebounce)="suggestions($event)"
+        placeholder="Buscar Capital..."
+        name="Capital"
+      ></app-pais-input>
+    </div>
   </div>
+
+  <ul *ngIf="showSuggestions" class="list-group list__custom">
+    <li
+      *ngFor="let pais of paiseSsuggestions"
+      class="list-group-item list-group-item-action list__custom--item"
+    >
+      <a class="nav-link"
+       [routerLink]="['/infoPais', pais.cca2]">
+        {{ pais.capital }}
+      </a>
+    </li>
+    <li
+     (click)="handleSubmit( termino )"
+      class="list-group-item list-group-item-action list__custom--item"
+    >
+      <a class="nav-link">
+        Buscar: "{{ termino }}"
+      </a>
+    </li>
+  </ul>
 </div>
 
 <hr />
@@ -18,7 +41,7 @@
 </div>
 
 <div *ngIf="paises.length > 0" class="row">
-  <div class="col">
+  <div class="col container__table">
     <app-pais-tabla [paises]="paises"></app-pais-tabla>
   </div>
 </div>
